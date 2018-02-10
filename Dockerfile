@@ -5,5 +5,6 @@ RUN apk update \
 WORKDIR /opt
 COPY install_composer.sh . 
 RUN ./install_composer.sh
-RUN ssh-keyscan bitbucket.org > ~/.ssh/known_hosts 2>/dev/null 
+RUN mkdir /root/.ssh \
+&& ssh-keyscan bitbucket.org > ~/.ssh/known_hosts 2>/dev/null 
 WORKDIR /var/jenkins_home
